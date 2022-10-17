@@ -1,8 +1,9 @@
 let playerScore = 0;
 let compScore = 0;
 
-function computerplay(){
 const computerChoices = ['rock', 'paper', 'scissors'];
+
+function computerplay(){
 const choices = Math.floor([Math.random()*computerChoices.length])
 return computerChoices[choices]
 };
@@ -42,9 +43,14 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   for (i=0; i<5; i++){
     playerSelection = prompt('Choose Your Weapon:\n Rock, Paper, Scissors\n Play 5 rounds to beat the computer').toLowerCase()
+    if(!computerChoices.includes(playerSelection)){
+      i--
+      console.log("Invalid Input");
+      continue
+    }
   computerSelection = computerplay()
-  console.log("1", playRound(playerSelection, computerSelection));
-
+  console.log(playRound(playerSelection, computerSelection));
+  console.log(`This is round ${i + 1}`);
   } 
 
   if (playerScore > compScore){
